@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 09:14:09 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/21 14:16:38 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	spawn_angle(t_data *d, char **map, t_v2 pos)
 	else if (map[pos.y][pos.x] == 'W')
 		d->player_angle = M_PI;
 	else if (map[pos.y][pos.x] == 'E')
-		d->player_angle = 2 * M_PI;
+		d->player_angle = 0;
 }
 
 int	check_char(t_data *d, char **map)

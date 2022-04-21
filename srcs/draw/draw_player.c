@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:18:53 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/18 16:05:18 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:23:46 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	draw_player(t_data *d)
 	compass = v2f(player.x + (d->dir_player.x * 20), \
 		player.y + (d->dir_player.y * 20));
 	draw_line_f(d, player, compass, 0xFF0000);
-	ft_ray(d, d->player_angle);
+	ft_rayscasting(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img, 0, 0);
 }

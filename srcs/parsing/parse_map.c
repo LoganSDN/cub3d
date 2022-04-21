@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 10:20:40 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/21 14:42:30 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ void	check_map(t_data *d, char **map)
 	// free_tab(map);`
 	new = add_space(new, max, i);
 	d->map_len = ft_strlen(new[0]);
-	i = -1;
-	while (new[++i])
-		d->map_height = i;
+	i = 0;
+	while (new[i])
+		d->map_height = i++;
 	d->ratio = v2(WIDTH / d->map_len, HEIGHT / d->map_height);
+	d->map_height++;
 	i = -1;
 	if (check_border(d, new) || check_char(d, new))
 		ft_putstr_fd("Error\n", 2);

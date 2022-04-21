@@ -25,7 +25,7 @@ OBJS_PREFIXED		= $(addprefix $(OBJS_DIR), $(OBJS))
 
 RM					= rm -f
 
-$(OBJS_DIR)%.o: %.c incl/cub3d.h libft/libft.a mlx/libmlx.a Makefile
+$(OBJS_DIR)%.o: %.c incl/cub3d.h libft/libft.a mlx/libmlx.a Makefile incl/key_map_azerty.h
 	mkdir -p $(OBJS_DIR)
 	mkdir -p $(OBJS_DIR)/srcs
 	mkdir -p $(OBJS_DIR)/srcs/parsing

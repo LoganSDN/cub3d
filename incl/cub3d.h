@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 10:06:30 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/21 14:17:22 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define WIDTH	512
-# define HEIGHT	512
+# define WIDTH	720
+# define HEIGHT	720
 
 # define TABLE	"NSEW10 "
 
@@ -52,6 +52,18 @@ typedef struct s_texture
 	t_col	ceil_col;
 }	t_tex;
 
+typedef struct s_ray
+{
+	float	wall;
+	t_v2f	nb;
+	t_v2f	dist;
+	t_v2	dir;
+	double	ray_angle;
+	t_v2f	ray_dir;
+	double	theta;
+	t_v2f	theta_ang;
+}	t_ray;
+
 typedef struct s_img
 {
 	void	*img;
@@ -63,16 +75,6 @@ typedef struct s_img
 	int		bpp;
 }	t_img;
 
-typedef struct s_ray
-{
-	double	theta;
-	float	wall;
-	t_v2f	nb;
-	t_v2f	dist;
-	t_v2	dir;
-	t_v2f	ang;
-}	t_ray;
-
 typedef struct s_data
 {
 	t_img	img;
@@ -80,14 +82,13 @@ typedef struct s_data
 	t_v2	player;
 	t_v2	ratio;
 	t_v2f	dir_player;
+	int		nb_rays;
 	double	player_angle;
 	void	*win_ptr;
 	void	*mlx_ptr;
 	char	**map;
-	char	*map_1d;
 	int		map_height;
 	int		map_len;
-	int		map_total;
 }	t_data;
 
 //PARSING
@@ -141,10 +142,11 @@ int		dial_key_move(int keycode, t_data *d);
 
 //RAYCASTING
 int		ft_isawall(t_data *d, t_ray ray);
-void	ft_ray(t_data *d, double angle);
+t_ray	ft_ray(t_data *d, double angle );
 void	ft_pos_in_map(t_data *d, t_ray ray, t_v2 *pos);
 void	ft_relative_pos(t_ray *ray, t_data *d);
 t_ray	ft_init_rays(t_data *d, double angle);
 double	ft_get_theta(double angle);
+void	ft_rayscasting(t_data *d);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:36:21 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/18 16:08:40 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/21 14:00:02 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	ft_whereinmap(t_data *d, float x0, float y0)
 	while (++y < WIDTH / d->map_len)
 	{
 		x = -1;
-		while (++x < HEIGHT / d->map_height + 1)
+		while (++x < HEIGHT / d->map_height)
 		{
 			if (y == 0 || y == WIDTH / d->map_len - 1)
 				put_pxl_to_img(x0 * d->ratio.x + x, y0 * \
 				d->ratio.y, 0x762786, d);
-			else if (x <= 4 || x >= HEIGHT / d->map_height + 1 - 4)
+			else if (x <= 4 || x >= HEIGHT / d->map_height - 4)
 				put_pxl_to_img(x0 * d->ratio.x + x, y0 * d->ratio.y + y, \
 				0x762786, d);
 		}

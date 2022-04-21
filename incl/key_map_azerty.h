@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_map_azerty.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 13:52:31 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/05 10:05:30 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/21 13:29:14 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@
 # define KEY_7 26
 # define KEY_8 28
 # define KEY_9 25
+# define KEY_PLUS 69
+# define KEY_MINUS 78
 
 # define KEY_ENTER 36
 # define KEY_ESC 53

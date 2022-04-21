@@ -1,2 +1,2 @@
 # cub3d
-First ray-casting engine in C
+Doom-like in C - First ray-casting engine 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:13:08 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:41:43 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 07:02:44 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	init(t_data *d, int fd)
 {
-	int	i;
-
-	i = 0;
 	d->map = join_and_split(d, fd);
 	d->mlx_ptr = mlx_init();
 	mlx_do_key_autorepeaton(d->mlx_ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:36:21 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:00:02 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 07:43:23 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	draw_map(t_data *d)
 		while (j < d->map_len)
 		{
 			if (d->map[i][j] == '1')
-				draw_square(d, 0x0000FF, map);
+				draw_square(d, d->tex.floor_col.value, map);
 			else
-				draw_square(d, 0xFFFFFF, map);
+				draw_square(d, d->tex.ceil_col.value, map);
 			j++;
 			map.x = j * d->ratio.x;
 		}

@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 07:55:31 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 07:50:48 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 09:00:18 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	get_desc(t_data *d)
 		}
 	}
 	if (order < 6)
-		ft_putstr_fd("Error\n", 2);
+		ft_error("map's desc is not in the right order. \
+		(Map must be at the EOF)\n");
 }

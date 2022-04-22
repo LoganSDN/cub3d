@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:16:38 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 09:39:56 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_char(t_data *d, char **map)
 			if (map[i][j] != '0' && map[i][j] != '1' && \
 				map[i][j] != 'N' && map[i][j] != 'S' && \
 				map[i][j] != 'E' && map[i][j] != 'W' && !ft_isspace(map[i][j]))
-				return (1);
+				ft_error("You slip an unrecognized char. You tricky boy.\n");
 			if ((map[i][j] == 'N' || map[i][j] == 'S' || \
 				map[i][j] == 'W' || map[i][j] == 'E'))
 			{
@@ -53,7 +53,13 @@ int	check_char(t_data *d, char **map)
 		}
 	}
 	if (count > 1 || !count)
+	{
+		if (count > 1)
+			ft_error("Too many players ..(Multi not supported)\n");
+		else
+			ft_error("So you want to play, without a player ? Ratio.\n");
 		return (1);
+	}
 	return (0);
 }
 
@@ -76,7 +82,8 @@ int	check_border(t_data *d, char **map)
 					(map[i][j + 1] && map[i][j + 1] == ' ') || \
 					(map[i][j - 1] && map[i][j - 1] == ' '))
 				{
-					dprintf(1, "Error in [%d][%d] -> %c\n", i, j, map[i][j]);
+					ft_printf("Error in [%d][%d] -> %c\n", i, j, map[i][j]);
+					ft_error("");
 					return (1);
 				}
 			}

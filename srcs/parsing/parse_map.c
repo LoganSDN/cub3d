@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:42:30 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 08:39:04 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,18 @@ void	check_map(t_data *d, char **map)
 		if (ft_strlen(map[i]) > max)
 			max = ft_strlen(map[i]);
 	new = malloc(sizeof(char *) * (i + 1));
+	if (!new)
+		ft_error("Malloc crash. (Check your ram .. ?)");
 	i = -1;
 	while (map[++i])
 	{
 		new[i] = malloc(sizeof(char) * (max + 1));
+		if (!new[i])
+		{
+			free_tab(new);
+			free_tab(map);
+			ft_error("Malloc crash. (Check your ram .. ?)");
+		}
 		new[i][max] = 0;
 		ft_strlcpy(new[i], map[i], max + 1);
 	}
@@ -43,7 +51,6 @@ void	check_map(t_data *d, char **map)
 			while (j < max)
 				new[i][j++] = ' ';
 	}
-	// free_tab(map);`
 	new = add_space(new, max, i);
 	d->map_len = ft_strlen(new[0]);
 	i = 0;

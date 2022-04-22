@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:17:22 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 07:56:53 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,23 @@ typedef union s_col
 	int		value;
 }	t_col;
 
-typedef struct s_texture
+
+typedef struct s_data_tex
 {
+	void	*ptr;
 	int		width;
 	int		height;
-	void	*no_tex;
-	void	*so_tex;
-	void	*we_tex;
-	void	*ea_tex;
-	t_col	floor_col;
-	t_col	ceil_col;
+	char	*path;
+}	t_data_tex;
+
+typedef struct s_texture
+{
+	t_data_tex	no_tex;
+	t_data_tex	so_tex;
+	t_data_tex	we_tex;
+	t_data_tex	ea_tex;
+	t_col		floor_col;
+	t_col		ceil_col;
 }	t_tex;
 
 typedef struct s_ray
@@ -119,10 +126,10 @@ int		stop(char c, char *table);
 void	routine(t_data *d);
 
 //UTILS
-int		ft_close(t_data *d);
 char	**join_and_split(t_data *d, int fd);
 void	free_all(t_data *d);
 int		free_tab(char **tab);
+int		ft_error(char *str);
 
 //INIT
 void	init(t_data *d, int fd);

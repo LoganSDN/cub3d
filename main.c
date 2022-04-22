@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:26:14 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:41:25 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:24:53 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int ac, char **av)
 	i = -1;
 	fd = open("maps/subj.cub", O_RDONLY);
 	init(&d, fd);
-	dprintf(2,"playerx= %d ,playery = %d\n",d.player.x, d.player.y);
 	routine(&d);
 	mlx_hook(d.win_ptr, 2, 1L << 0, dial_key, &d);
 	mlx_loop(d.mlx_ptr);

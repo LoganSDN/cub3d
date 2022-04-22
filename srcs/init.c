@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:13:08 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 16:00:03 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:45:29 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ void	init(t_data *d, int fd)
 	mlx_do_key_autorepeaton(d->mlx_ptr);
 	get_desc(d);
 	d->dir_player = v2f(cos(d->player_angle), sin(d->player_angle));
-	d->img.height = d->map_height * d->ratio.y;
-	d->img.width = d->map_len * d->ratio.x;
-	// dprintf(1, "d.imgwidth : %d height : %d\n", d->img.width, d->img.height);
 	d->nb_rays = WIDTH;
-	d->img.img = mlx_new_image(d->mlx_ptr, d->img.width, d->img.height);
+	d->img.img = mlx_new_image(d->mlx_ptr, WIDTH + 1, HEIGHT + 1);
 	d->img.img_ptr = mlx_get_data_addr(d->img.img, &d->img.bpp, \
 		&d->img.sl, &d->img.endian);
 	d->img.bpp /= 8;

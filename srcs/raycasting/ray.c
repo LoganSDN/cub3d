@@ -6,16 +6,50 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:24:35 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 16:16:08 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:25:31 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
 
-void	verLine(t_data *d, int x, int y, int y2, int color)
+void	draw_wall(t_data *d, int col, int start, int end)
 {
-	while (y++ <= y2)
-		put_pxl_to_img(WIDTH - x, y, color, d);
+	int	i;
+
+	i = 0;
+	while (i < start)
+		put_pxl_to_img(WIDTH - col, i++, d->tex.ceil_col.value, d);
+	while (i <= end)
+		put_pxl_to_img(WIDTH - col, i++, 0x050778, d);
+	while (i < HEIGHT)
+		put_pxl_to_img(WIDTH - col, i++, d->tex.floor_col.value, d);
+}
+
+void	ft_draw_wall(t_data *d, t_ray ray, int w)
+{
+	int		wall_height;
+	int		wall_start;
+	int		wall_end;
+
+	wall_height = HEIGHT / ray.wall;
+	wall_start = (HEIGHT - wall_height) / 2;
+	if (wall_start < 0)
+		wall_start = 0;
+	wall_end = (HEIGHT + wall_height) / 2;
+	if (wall_end >= HEIGHT)
+		wall_end = HEIGHT - 1;
+	draw_wall(d, w, wall_start, wall_end);
+}
+
+void	ft_fixeye(t_ray *ray, double angle)
+{
+	double	theta;
+
+	theta = fmod(fabs(angle), 2 * M_PI);
+	if ((*ray).side == 1)
+		(*ray).wall = (*ray).wall * cos(theta);
+	else
+		(*ray).wall = (*ray).wall * cos(theta);
 }
 
 void	ft_rayscasting(t_data *d)
@@ -23,51 +57,21 @@ void	ft_rayscasting(t_data *d)
 	double	angle;
 	double	step;
 	int		i;
-	int		color;
-	double	theta;
 	t_ray	ray;
 
 	i = 0;
 	step = (M_PI / 3) / d->nb_rays;
-	while (i <= d->nb_rays)
+	while (i < d->nb_rays)
 	{
 		angle = fmod((d->player_angle - M_PI / 6) + step * i, 2 * M_PI);
 		ray = ft_ray(d, angle);
-		theta = fmod(fabs(d->player_angle - angle), 2 * M_PI);
-		if (ray.side == 1)
-		{
-			ray.wall = ray.wall * cos(theta);
-			color = 0x0000FF;
-		}
-		else
-		{
-			ray.wall = ray.wall * cos(theta);
-			color = 0xFF00000;
-		}
-		int line_h = HEIGHT / ray.wall;
-		int drawStart = -line_h / 2 + HEIGHT / 2;
-		if(drawStart < 0)
-			drawStart = 0;
-		int drawEnd = line_h / 2 + HEIGHT / 2;
-		if (drawEnd >= HEIGHT)
-			drawEnd = HEIGHT - 1;
-		verLine(d, i , 0, drawStart, d->tex.ceil_col.value);
-		verLine(d, i, drawStart, drawEnd, color);
-		verLine(d, i , drawEnd, HEIGHT, d->tex.floor_col.value);
+		ft_fixeye(&ray, d->player_angle - angle);
+		ft_draw_wall(d, ray, i);
 		angle += step;
-		// if (i == WIDTH / 2)
-		// 	draw_angle(d, ray.wall * d->ratio.y, ray.ray_dir, 0xff0000);
-		// else
-		// 	draw_angle(d, ray.wall * d->ratio.y, ray.ray_dir, 0x00ff00);
 		i++;
 	}
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img, 0, 0);
 }
-
-//  if(side == 0) 
-//  	perpWallDist = (sideDistX - deltaDistX);
-// else          
-// 	perpWallDist = (sideDistY - deltaDistY);
 
 t_ray	ft_ray(t_data *d, double angle)
 {

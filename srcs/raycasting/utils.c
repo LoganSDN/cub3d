@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:06:57 by emortier          #+#    #+#             */
-/*   Updated: 2022/04/22 16:01:07 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:20:53 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_ray	ft_init_rays(t_data *d, double angle)
 	return (ray);
 }
 
-void	ft_pos_in_map(t_data *d, t_ray ray, t_v2 *pos)
+void	ft_pos_in_map(t_data *d, t_ray ray, t_v2f *pos)
 {
 	if (ray.dist.x < ray.dist.y)
 	{
@@ -75,11 +75,11 @@ void	ft_pos_in_map(t_data *d, t_ray ray, t_v2 *pos)
 
 int	ft_isawall(t_data *d, t_ray ray)
 {
-	t_v2	pos;
+	t_v2f	pos;
 
 	ft_pos_in_map(d, ray, &pos);
 	if (pos.x >= 0 && pos.y >= 0 && pos.x <= d->map_len && \
-		pos.y <= d->map_height && d->map[pos.y][pos.x] == '1')
+		pos.y <= d->map_height && d->map[(int)pos.y][(int)pos.x] == '1')
 	{
 		ray.pos = pos;
 		return (1);

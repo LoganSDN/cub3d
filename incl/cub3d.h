@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 16:15:55 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:50:23 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_texture
 typedef struct s_ray
 {
 	float	wall;
-	t_v2	pos;
+	t_v2f	pos;
 	t_v2f	nb;
 	t_v2f	dist;
 	t_v2	dir;
@@ -77,8 +77,6 @@ typedef struct s_img
 {
 	void	*img;
 	void	*img_ptr;
-	int		width;
-	int		height;
 	int		sl;
 	int		endian;
 	int		bpp;
@@ -152,7 +150,7 @@ int		dial_key_move(int keycode, t_data *d);
 //RAYCASTING
 int		ft_isawall(t_data *d, t_ray ray);
 t_ray	ft_ray(t_data *d, double angle );
-void	ft_pos_in_map(t_data *d, t_ray ray, t_v2 *pos);
+void	ft_pos_in_map(t_data *d, t_ray ray, t_v2f *pos);
 void	ft_relative_pos(t_ray *ray, t_data *d);
 t_ray	ft_init_rays(t_data *d, double angle);
 double	ft_get_theta(double angle);

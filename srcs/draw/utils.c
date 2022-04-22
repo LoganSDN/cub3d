@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:37:12 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 07:46:20 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 15:42:16 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	draw_square(t_data *d, int color, t_v2f map)
 	int	j;
 
 	i = 0;
-	while (i < d->ratio.y)
+	while (i < d->ratio.y - 1)
 	{
 		j = 0;
-		while (j < d->ratio.x)
+		while (j < d->ratio.x - 1)
 		{
 			put_pxl_to_img(j + map.x, i + map.y, color, d);
 			j++;
@@ -61,8 +61,8 @@ void	draw_angle(t_data *d, int len, t_v2f dir, int color)
 
 	i = 0;
 	while (++i < len)
-		put_pxl_to_img(d->player.x + dir.x * i, \
-		d->player.y - dir.y * i, color, d);
+		put_pxl_to_img(d->player.x * d->ratio.x + dir.x * i, \
+		d->player.y * d->ratio.y - dir.y * i, color, d);
 }
 
 void	draw_line(t_data *d, t_v2 src, t_v2 dst, int c)

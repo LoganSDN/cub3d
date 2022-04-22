@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:06:57 by emortier          #+#    #+#             */
-/*   Updated: 2022/04/22 14:47:16 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 16:01:07 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,22 @@ void	ft_relative_pos(t_ray *ray, t_data *d)
 	if (ray->ray_dir.y < 0)
 	{
 		(*ray).dir.y = 1;
-		(*ray).nb.y = 1.f - ((float)(d->player.y % d->ratio.y) \
-		/ (float)d->ratio.y);
+		(*ray).nb.y = 1.f - fmod(d->player.y, 1);
 	}
 	else
 	{
 		(*ray).dir.y = -1;
-		(*ray).nb.y = ((float)(d->player.y % d->ratio.y) \
-		/ (float)d->ratio.y) * (float)(*ray).dir.y;
+		(*ray).nb.y = fmod(d->player.y, 1) * (float)(*ray).dir.y;
 	}
 	if (ray->ray_dir.x < 0)
 	{
 		(*ray).dir.x = -1;
-		(*ray).nb.x = ((float)(d->player.x % d->ratio.x) \
-		/ (float)d->ratio.x) * (float)(*ray).dir.x;
+		(*ray).nb.x = (float) fmod(d->player.x, 1) * (float)(*ray).dir.x;
 	}
 	else
 	{
 		(*ray).dir.x = 1;
-		(*ray).nb.x = 1.f - ((float)(d->player.x % d->ratio.x) \
-		/ (float)d->ratio.x);
+		(*ray).nb.x = 1.f - fmod(d->player.x, 1);
 	}
 }
 
@@ -59,27 +55,21 @@ void	ft_pos_in_map(t_data *d, t_ray ray, t_v2 *pos)
 {
 	if (ray.dist.x < ray.dist.y)
 	{
-		(*pos).x = (d->player.x + \
-		(ray.nb.x * d->ratio.x) + ray.dir.x) / d->ratio.x;
+		(*pos).x = (d->player.x + ray.nb.x + 0.01f * ray.dir.x);
 		if ((ray.ray_dir.x > 0 && ray.ray_dir.y < 0) \
 		|| (ray.ray_dir.x < 0 && ray.ray_dir.y > 0))
-			(*pos).y = (d->player.y + \
-			(tan(ray.theta) * ray.nb.x * d->ratio.y)) / d->ratio.y;
+			(*pos).y = (d->player.y + (tan(ray.theta) * ray.nb.x));
 		else
-			(*pos).y = (d->player.y + \
-			(tan(-ray.theta) * ray.nb.x * d->ratio.y)) / d->ratio.y;
+			(*pos).y = d->player.y + (tan(-ray.theta) * ray.nb.x);
 	}
 	else
 	{
 		if ((ray.ray_dir.x > 0 && ray.ray_dir.y < 0) || \
 		(ray.ray_dir.x < 0 && ray.ray_dir.y > 0))
-			(*pos).x = (d->player.x + \
-		((ray.nb.y / tan(ray.theta)) * d->ratio.x)) / d->ratio.x;
+			(*pos).x = d->player.x + (ray.nb.y / tan(ray.theta));
 		else
-			(*pos).x = (d->player.x + ((ray.nb.y / tan(-ray.theta)) \
-			* d->ratio.x)) / d->ratio.x;
-		(*pos).y = (d->player.y + (ray.nb.y * d->ratio.y) + ray.dir.y) \
-		/ d->ratio.y;
+			(*pos).x = d->player.x + (ray.nb.y / tan(-ray.theta));
+		(*pos).y = d->player.y + ray.nb.y + 0.01f * ray.dir.y;
 	}
 }
 

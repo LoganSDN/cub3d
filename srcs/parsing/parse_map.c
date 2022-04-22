@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 08:39:04 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 16:00:09 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	check_map(t_data *d, char **map)
 	replace(&new);
 	free_tab(d->map);
 	d->map = new;
-	while (new[++i])
-		dprintf(1, "%s\n", new[i]);
+	// while (new[++i])
+	// 	dprintf(1, "%s\n", new[i]);
 }

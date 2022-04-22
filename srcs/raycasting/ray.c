@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:24:35 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 14:21:48 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 16:16:08 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ void	ft_rayscasting(t_data *d)
 		verLine(d, i, drawStart, drawEnd, color);
 		verLine(d, i , drawEnd, HEIGHT, d->tex.floor_col.value);
 		angle += step;
+		// if (i == WIDTH / 2)
+		// 	draw_angle(d, ray.wall * d->ratio.y, ray.ray_dir, 0xff0000);
+		// else
+		// 	draw_angle(d, ray.wall * d->ratio.y, ray.ray_dir, 0x00ff00);
 		i++;
 	}
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img, 0, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:18:53 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 14:42:53 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 15:33:47 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,12 @@ void	draw_player(t_data *d)
 	{
 		j = -10;
 		while (++j < 10)
-			put_pxl_to_img(j + d->player.x, i + d->player.y, 0x00FFFF, d);
+			put_pxl_to_img(j + d->player.x * d->ratio.x, i + d->player.y * d->ratio.y, 0x00FFFF, d);
 	}
-	player = v2(d->player.x, d->player.y);
+	player = v2(d->player.x * d->ratio.x, d->player.y * d->ratio.y);
 	compass = v2f(player.x + (d->dir_player.x * 20), \
 		player.y + (d->dir_player.y * 20));
 	draw_line_f(d, player, compass, 0xFF0000);
-	// ft_rayscasting(d);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img, 0, 0);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.so_tex.ptr, 0, 0);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.no_tex.ptr, 0, 32);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.ea_tex.ptr, \
-	0, 32 * 2);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.we_tex.ptr, \
-	0, 32 * 3);
+	ft_rayscasting(d);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img_ptr, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 14:43:49 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 15:19:38 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_char(t_data *d, char **map)
 				map[i][j] == 'W' || map[i][j] == 'E'))
 			{
 				pos = v2(j, i);
-				d->player = v2((j + 0.5) * d->ratio.x, (i + 0.5) * d->ratio.y);
+				d->player = v2f(j + 0.5, i + 0.5);
 				spawn_angle(d, map, pos);
 				count++;
 			}

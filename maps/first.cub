@@ -1,26 +1,18 @@
+SO ./texture/so.xpm
+NO ./texture/no.xpm
+
+
+
+F 250,249,246
+EA ./texture/ea.xpm
+
+
+WE ./texture/we.xpm
 
 
 
 
-
-                 NO ./hjhjgjhgahjs
-
-
-
-
-     
-  
-  
-  
-	             SO ./hjjsjkhjkhjkhk kjs
-                 WE ./hjhsdjnds        kjhdjkshdjkshhjs
-  
-                 EA ./hjdskjdsklj             dklsjdlskjdklsjhjs                  
-
-
-F               110, 230, 10
-C               250, 150, 20
-
+C 173, 216, 230 
 
 
 
@@ -34,7 +26,7 @@ C               250, 150, 20
               11111111
               10000001
 1111111111111110100001
-10000000000000000N0001
+10000000000000000W0001
 1100000111111111111111
 10000001
 10000001

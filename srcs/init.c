@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:13:08 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 07:02:44 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 11:31:50 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	init(t_data *d, int fd)
 	d->img.height = d->map_height * d->ratio.y;
 	d->img.width = d->map_len * d->ratio.x;
 	dprintf(1, "d.imgwidth : %d height : %d\n", d->img.width, d->img.height);
-	d->nb_rays = 50;
+	d->nb_rays = WIDTH;
 	d->img.img = mlx_new_image(d->mlx_ptr, d->img.width, d->img.height);
 	d->img.img_ptr = mlx_get_data_addr(d->img.img, &d->img.bpp, \
 		&d->img.sl, &d->img.endian);
 	d->img.bpp /= 8;
 	d->win_ptr = mlx_new_window(d->mlx_ptr, \
-		d->img.width, d->img.height, "cub3d");
+		WIDTH, HEIGHT, "cub3d");
 }

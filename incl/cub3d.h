@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 07:56:53 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 14:54:38 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdio.h>
 
 # define WIDTH	720
-# define HEIGHT	720
+# define HEIGHT	420
 
 # define TABLE	"NSEW10 "
 
@@ -62,9 +62,11 @@ typedef struct s_texture
 typedef struct s_ray
 {
 	float	wall;
+	t_v2	pos;
 	t_v2f	nb;
 	t_v2f	dist;
 	t_v2	dir;
+	int		side;
 	double	ray_angle;
 	t_v2f	ray_dir;
 	double	theta;

@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:18:53 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 07:48:01 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 14:42:53 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_player(t_data *d)
 	compass = v2f(player.x + (d->dir_player.x * 20), \
 		player.y + (d->dir_player.y * 20));
 	draw_line_f(d, player, compass, 0xFF0000);
-	ft_rayscasting(d);
+	// ft_rayscasting(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img, 0, 0);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.so_tex.ptr, 0, 0);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.no_tex.ptr, 0, 32);

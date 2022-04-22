@@ -6,7 +6,7 @@
 /*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:26:14 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 10:29:15 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:15:35 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	routine(t_data *d)
 {
 	(void) d;
-	// ft_rayscasting(d);
-	draw_map(d);
-	draw_player(d);
+	ft_rayscasting(d);
+	// draw_map(d);
+	// draw_player(d);
 }
 
 int	ft_error(char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:37:12 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:08:12 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 07:46:20 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	draw_square(t_data *d, int color, t_v2f map)
 	int	j;
 
 	i = 0;
-	while (i < d->ratio.y - 1)
+	while (i < d->ratio.y)
 	{
 		j = 0;
-		while (j < d->ratio.x - 1)
+		while (j < d->ratio.x)
 		{
 			put_pxl_to_img(j + map.x, i + map.y, color, d);
 			j++;

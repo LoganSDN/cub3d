@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:18:53 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 14:23:46 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 07:48:01 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	draw_player(t_data *d)
 	draw_line_f(d, player, compass, 0xFF0000);
 	ft_rayscasting(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img.img, 0, 0);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.so_tex.ptr, 0, 0);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.no_tex.ptr, 0, 32);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.ea_tex.ptr, \
+	0, 32 * 2);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->tex.we_tex.ptr, \
+	0, 32 * 3);
 }

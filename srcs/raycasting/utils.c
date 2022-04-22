@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:06:57 by emortier          #+#    #+#             */
-/*   Updated: 2022/04/21 14:49:22 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/22 14:47:16 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ int	ft_isawall(t_data *d, t_ray ray)
 	ft_pos_in_map(d, ray, &pos);
 	if (pos.x >= 0 && pos.y >= 0 && pos.x <= d->map_len && \
 		pos.y <= d->map_height && d->map[pos.y][pos.x] == '1')
-			return (1);
+	{
+		ray.pos = pos;
+		return (1);
+	}
 	return (0);
 }
 

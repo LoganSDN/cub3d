@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:26:14 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 09:55:44 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/22 14:54:50 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	routine(t_data *d)
 {
 	(void) d;
-	// ft_rayscasting(d);
-	draw_map(d);
-	draw_player(d);
+	ft_rayscasting(d);
+	// draw_map(d);
+	// draw_player(d);
 }
 
 int	ft_error(char *str)

@@ -20,18 +20,19 @@ int	dial_key_move(int keycode, t_data *d)
 	}
 	else if (keycode == KEY_DOWN)
 	{
-		d->player.x -= (int)(d->dir_player.x * 10);
-		d->player.y += (int)(d->dir_player.y * 10);
+		d->player.x -= (int)(d->dir_player.x * 5);
+		d->player.y += (int)(d->dir_player.y * 5);
 	}
 	else if (keycode == KEY_UP)
 	{
-		d->player.x += (int)(d->dir_player.x * 10);
-		d->player.y -= (int)(d->dir_player.y * 10);
+		d->player.x += (int)(d->dir_player.x * 5);
+		d->player.y -= (int)(d->dir_player.y * 5);
 	}
-	else if (keycode == KEY_MINUS && d->nb_rays > 50)
-		d->nb_rays -= 2;
-	else if (keycode == KEY_PLUS)
-		d->nb_rays += 2;
+	// else if (keycode == KEY_MINUS && d->nb_rays > 50)
+	// 	d->nb_rays -= 2;
+	// else if (keycode == KEY_PLUS)
+	// 	d->nb_rays += 2;
+	ft_bzero(d->img.img_ptr, (HEIGHT * d->img.sl) + (WIDTH * d->img.bpp));
 	routine(d);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:06:57 by emortier          #+#    #+#             */
-/*   Updated: 2022/04/22 18:20:53 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:32:51 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ void	ft_pos_in_map(t_data *d, t_ray ray, t_v2f *pos)
 	}
 }
 
-int	ft_isawall(t_data *d, t_ray ray)
+int	ft_isawall(t_data *d, t_ray *ray)
 {
 	t_v2f	pos;
 
-	ft_pos_in_map(d, ray, &pos);
+	ft_pos_in_map(d, (*ray), &pos);
 	if (pos.x >= 0 && pos.y >= 0 && pos.x <= d->map_len && \
 		pos.y <= d->map_height && d->map[(int)pos.y][(int)pos.x] == '1')
 	{
-		ray.pos = pos;
+		(*ray).pos.x = fmod(pos.x, 1);
+		(*ray).pos.y = fmod(pos.y, 1);
 		return (1);
 	}
 	return (0);

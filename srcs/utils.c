@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:12:29 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 07:18:18 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 11:22:26 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	free_tab(char **tab)
 
 void	free_all(t_data *d)
 {
-	free(d->tex.no_tex.path);
-	free(d->tex.so_tex.path);
-	free(d->tex.we_tex.path);
-	free(d->tex.ea_tex.path);
+	free(d->tex.tex[0].path);
+	free(d->tex.tex[1].path);
+	free(d->tex.tex[2].path);
+	free(d->tex.tex[3].path);
 	free_tab(d->map);
 	// exit (0);
 }

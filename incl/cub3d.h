@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 08:46:19 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 11:21:08 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,19 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define WIDTH	720
-# define HEIGHT	420
+# define WIDTH	1440
+# define HEIGHT 720	
 
 # define TABLE	"NSEW10 "
+
+typedef struct s_img
+{
+	void	*img;
+	void	*img_ptr;
+	int		sl;
+	int		endian;
+	int		bpp;
+}	t_img;
 
 typedef struct s_rgb
 {
@@ -42,11 +51,7 @@ typedef union s_col
 
 typedef struct s_data_tex
 {
-	void	*img;
-	int		bpp;
-	int		sl;
-	int		endian;
-	void	*ptr;
+	t_img	img;
 	int		width;
 	int		height;
 	char	*path;
@@ -54,10 +59,7 @@ typedef struct s_data_tex
 
 typedef struct s_texture
 {
-	t_data_tex	no_tex;
-	t_data_tex	so_tex;
-	t_data_tex	we_tex;
-	t_data_tex	ea_tex;
+	t_data_tex	tex[4];
 	t_col		floor_col;
 	t_col		ceil_col;
 }	t_tex;
@@ -76,14 +78,6 @@ typedef struct s_ray
 	t_v2f	theta_ang;
 }	t_ray;
 
-typedef struct s_img
-{
-	void	*img;
-	void	*img_ptr;
-	int		sl;
-	int		endian;
-	int		bpp;
-}	t_img;
 
 typedef struct s_data
 {
@@ -122,8 +116,8 @@ char	**add_space(char **old, int max, int nb_line);
 char	*autocomplete(char *str, int x);
 void	replace(char ***map);
 int		count_digits(int nb);
-int		only_one(char *str);
 int		stop(char c, char *table);
+int		check_w_h(t_data *d);
 
 //PROCESS
 void	routine(t_data *d);
@@ -151,7 +145,7 @@ int		dial_key(int keycode, t_data *d);
 int		dial_key_move(int keycode, t_data *d);
 
 //RAYCASTING
-int		ft_isawall(t_data *d, t_ray ray);
+int		ft_isawall(t_data *d, t_ray *ray);
 t_ray	ft_ray(t_data *d, double angle );
 void	ft_pos_in_map(t_data *d, t_ray ray, t_v2f *pos);
 void	ft_relative_pos(t_ray *ray, t_data *d);

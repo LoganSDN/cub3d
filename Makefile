@@ -13,6 +13,7 @@ SRCS				=	main.c						\
 						srcs/parsing/parse_tex.c	\
 						srcs/parsing/parse_colors.c	\
 						srcs/parsing/utils.c		\
+						srcs/parsing/utils2.c		\
 						srcs/raycasting/ray.c		\
 						srcs/raycasting/utils.c 	\
 						srcs/dial_key.c				\

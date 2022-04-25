@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 11:21:08 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 16:01:15 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <stdio.h>
 
 # define WIDTH	1440
-# define HEIGHT 720	
+# define HEIGHT 1220	
+# define FOV	M_PI / 3
 
 # define TABLE	"NSEW10 "
 

@@ -4,7 +4,7 @@ int	dial_key_move(int keycode, t_data *d)
 {
 	if (keycode == KEY_LEFT)
 	{
-		d->player_angle += 0.1f;
+		d->player_angle += 0.0500f;
 		if (d->player_angle > 2 * M_PI)
 			d->player_angle = 0;
 		d->dir_player.x = cos(d->player_angle);
@@ -12,7 +12,7 @@ int	dial_key_move(int keycode, t_data *d)
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		d->player_angle -= 0.1f;
+		d->player_angle -= 0.0500f;
 		if (d->player_angle < 0)
 			d->player_angle += 2 * M_PI;
 		d->dir_player.x = cos(d->player_angle);

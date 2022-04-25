@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:37:12 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 15:11:26 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 15:48:22 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_pxl_to_img(int x, int y, int color, t_data *d)
 {
-	if ((x >= 0 && x <= WIDTH) || (y >= 0 && y <= HEIGHT))
+	if ((x >= 0 && x <= WIDTH) && (y >= 0 && y <= HEIGHT))
 		*(int *)(d->img.img_ptr + (((d->img.sl * y) + (x * d->img.bpp)))) = color;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 17:42:41 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/25 19:06:28 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define WIDTH	1440
-# define HEIGHT 1170
+# define WIDTH	1440 / 2
+# define HEIGHT 1170 / 2
 # define FOV 	1.0471975512
 
 # define TABLE	"NSEW10 "
@@ -86,6 +86,7 @@ typedef struct s_data
 	t_v2f	player;
 	t_v2	ratio;
 	t_v2f	dir_player;
+	t_ray	ray;
 	int		nb_rays;
 	double	player_angle;
 	void	*win_ptr;

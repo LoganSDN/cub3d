@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:35:48 by emortier          #+#    #+#             */
-/*   Updated: 2022/04/25 17:40:35 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/25 19:23:02 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	ft_choose_tex(t_ray ray)
 		if (ray.dir.y > 0)
 			choose = 0;
 	else
-			choose = 2;
+		choose = 2;
 	else
 		if (ray.dir.x < 0)
 			choose = 1;
 	else
-			choose = 3;
+		choose = 3;
 	return (choose);
 }
 

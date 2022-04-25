@@ -1,3 +1,7 @@
+
+
+                  
+
 SO ./texture/so.xpm
 NO ./texture/no.xpm
 
@@ -7,13 +11,15 @@ F 250,249,246
 EA ./texture/ea.xpm
 
 
-WE ./texture/we.xpm
+
+
 
 
 
 
 C 173, 216, 230 
 
+WE ./texture/we.xpm
 
 
 

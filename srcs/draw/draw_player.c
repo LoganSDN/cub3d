@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:18:53 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 15:33:47 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/25 08:49:12 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	draw_player(t_data *d)
 	{
 		j = -10;
 		while (++j < 10)
-			put_pxl_to_img(j + d->player.x * d->ratio.x, i + d->player.y * d->ratio.y, 0x00FFFF, d);
+			put_pxl_to_img(j + d->player.x * d->ratio.x, \
+			i + d->player.y * d->ratio.y, 0x00FFFF, d);
 	}
 	player = v2(d->player.x * d->ratio.x, d->player.y * d->ratio.y);
 	compass = v2f(player.x + (d->dir_player.x * 20), \

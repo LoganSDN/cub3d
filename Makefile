@@ -1,6 +1,6 @@
 NAME				= cub3d
 CC					= gcc
-CFLAGS				=  -O3 -Ofast -flto -march=native -ffast-math -Wall -Werror -Wextra
+CFLAGS				=  -g #-O3 -Ofast -flto -march=native -ffast-math -Wall -Werror -Wextra
 SRCS				=	main.c						\
 						srcs/draw/draw_map.c		\
 						srcs/draw/draw_player.c		\

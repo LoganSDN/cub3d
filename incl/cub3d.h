@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/22 17:50:23 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/25 08:46:19 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ typedef union s_col
 	int		value;
 }	t_col;
 
-
 typedef struct s_data_tex
 {
+	void	*img;
+	int		bpp;
+	int		sl;
+	int		endian;
 	void	*ptr;
 	int		width;
 	int		height;
@@ -111,7 +114,7 @@ void	get_color(t_data *d, int i, int *j, int *order);
 void	get_floor(t_data *d, int i, int *j, int *order);
 void	get_ceil(t_data *d, int i, int *j, int *order);
 /* Map */
-void	check_map(t_data *d, char **map);
+void	check_map(t_data *d, char **map, int *order);
 int		check_border(t_data *d, char **map);
 int		check_char(t_data *d, char **map);
 /* Utils */

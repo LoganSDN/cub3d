@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 09:26:14 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 12:00:47 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 17:42:53 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/cub3d.h"
-
-void	routine(t_data *d)
-{
-	(void) d;
-	ft_rayscasting(d);
-	// draw_map(d);
-	// draw_player(d);
-}
 
 int	ft_error(char *str)
 {
@@ -61,11 +53,7 @@ int	main(int ac, char **av)
 	if (fd < 0)
 		return (ft_error("Unable to open map\n"));
 	init(&d, fd);
-	routine(&d);
-	int	i;
-	i = -1;
-	while (++i < 4)
-		mlx_put_image_to_window(d.mlx_ptr, d.win_ptr, d.tex.tex[i].img.img, 0, 32 * i);
+	ft_rayscasting(&d);
 	mlx_hook(d.win_ptr, 2, 1L << 0, dial_key, &d);
 	mlx_loop(d.mlx_ptr);
 	free_all(&d);

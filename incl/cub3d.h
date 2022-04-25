@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 16:01:15 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 17:42:41 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <stdio.h>
 
 # define WIDTH	1440
-# define HEIGHT 1220	
-# define FOV	M_PI / 3
+# define HEIGHT 1170
+# define FOV 	1.0471975512
 
 # define TABLE	"NSEW10 "
 
@@ -79,7 +79,6 @@ typedef struct s_ray
 	t_v2f	theta_ang;
 }	t_ray;
 
-
 typedef struct s_data
 {
 	t_img	img;
@@ -120,9 +119,6 @@ int		count_digits(int nb);
 int		stop(char c, char *table);
 int		check_w_h(t_data *d);
 
-//PROCESS
-void	routine(t_data *d);
-
 //UTILS
 char	**join_and_split(t_data *d, int fd);
 void	free_all(t_data *d);
@@ -134,12 +130,8 @@ void	init(t_data *d, int fd);
 
 //DRAW
 void	put_pxl_to_img(int x, int y, int color, t_data *d);
-void	draw_map(t_data *d);
-void	draw_square(t_data *d, int color, t_v2f map);
-void	draw_player(t_data *d);
-void	draw_line(t_data *d, t_v2 src, t_v2 dst, int c);
-void	draw_line_f(t_data *d, t_v2 src, t_v2f dst, int c);
-void	draw_angle(t_data *d, int len, t_v2f dir, int color);
+void	draw_wall(t_data *d, int col, t_ray ray);
+void	ft_put_texture(t_data *d, int col, t_v2 wall, t_ray ray);
 
 //EVENT
 int		dial_key(int keycode, t_data *d);

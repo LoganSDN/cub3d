@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:12:29 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 11:22:26 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 17:05:26 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	free_all(t_data *d)
 	free(d->tex.tex[2].path);
 	free(d->tex.tex[3].path);
 	free_tab(d->map);
-	// exit (0);
 }
 
 char	**join_and_split(t_data *d, int fd)

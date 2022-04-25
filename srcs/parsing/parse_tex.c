@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:29:05 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 16:14:59 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 17:07:22 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	get_north(t_data *d, int i, int *j, int *order)
 		if (!d->tex.tex[0].img.img)
 			ft_error("Error while opening 'tex[0].img'. Check your path\n");
 		d->tex.tex[0].img.img_ptr = mlx_get_data_addr(d->tex.tex[0].img.img, \
-		&d->tex.tex[0].img.bpp, &d->tex.tex[0].img.sl, &d->tex.tex[0].img.endian);
+		&d->tex.tex[0].img.bpp, &d->tex.tex[0].img.sl, \
+		&d->tex.tex[0].img.endian);
 		if (!d->tex.tex[0].img.img_ptr)
 			ft_error("Error while getting 'NO_tex' adress.\n");
 		d->tex.tex[0].img.bpp /= 8;
@@ -50,7 +51,8 @@ void	get_south(t_data *d, int i, int *j, int *order)
 		if (!d->tex.tex[2].img.img)
 			ft_error("Error while opening 'tex[2].img'. Check your path\n");
 		d->tex.tex[2].img.img_ptr = mlx_get_data_addr(d->tex.tex[2].img.img, \
-		&d->tex.tex[2].img.bpp, &d->tex.tex[2].img.sl, &d->tex.tex[2].img.endian);
+		&d->tex.tex[2].img.bpp, &d->tex.tex[2].img.sl, \
+		&d->tex.tex[2].img.endian);
 		if (!d->tex.tex[2].img.img_ptr)
 			ft_error("Error while getting 'NO_tex' adress.\n");
 		d->tex.tex[2].img.bpp /= 8;

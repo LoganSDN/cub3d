@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_map_qwerty.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 07:47:21 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 07:49:04 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 12:06:48 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#ifndef KEY_MAP_QWERTY_H
+# define KEY_MAP_QWERTY_H
 
 # define KEY_A 0
 # define KEY_S 1

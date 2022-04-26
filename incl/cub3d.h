@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 17:42:41 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/26 07:36:54 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include "../mlx/mlx.h"
 # include "../srcs/vector/vector.h"
 # include "../libft/libft.h"
-# include "key_map_azerty.h"
+# include "key_map_qwerty.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
 
-# define WIDTH	1440
-# define HEIGHT 1170
+# define WIDTH	1440 / 2
+# define HEIGHT 1170 / 2
 # define FOV 	1.0471975512
 
 # define TABLE	"NSEW10 "
@@ -84,8 +84,8 @@ typedef struct s_data
 	t_img	img;
 	t_tex	tex;
 	t_v2f	player;
-	t_v2	ratio;
 	t_v2f	dir_player;
+	t_ray	ray;
 	int		nb_rays;
 	double	player_angle;
 	void	*win_ptr;
@@ -118,6 +118,7 @@ void	replace(char ***map);
 int		count_digits(int nb);
 int		stop(char c, char *table);
 int		check_w_h(t_data *d);
+int		check_corner(char **map, int i, int j, t_data *d);
 
 //UTILS
 char	**join_and_split(t_data *d, int fd);

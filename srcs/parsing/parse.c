@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 07:55:31 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 18:29:47 by lsidan           ###   ########.fr       */
+/*   Updated: 2022/04/26 08:46:23 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	get_desc(t_data *d)
 	order = 0;
 	order_sorter(d, &order);
 	if (check_w_h(d))
-		ft_error("Textures are not in the same size");
+		ft_error("Textures are not in the same size", d);
 	if (order != 7)
 		ft_error("map's desc is not in the right order. \
-		(Map must be at the EOF)\n");
+		(Map must be at the EOF)\n", d);
 }

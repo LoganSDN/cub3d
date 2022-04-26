@@ -6,11 +6,34 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:01:41 by emortier          #+#    #+#             */
-/*   Updated: 2022/04/25 19:49:00 by lsidan           ###   ########.fr       */
+/*   Updated: 2022/04/26 08:26:01 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
+
+int	dial_key_move3(int keycode, t_data *d)
+{
+	double	angle;
+
+	if (keycode == KEY_A)
+	{
+		angle = fmod(d->player_angle + M_PI_2, 2 * M_PI);
+		if (d->map[(int)(d->player.y - sin(angle) / 8)] \
+		[(int)(d->player.x + cos(angle) / 8)] != '1')
+			d->player = v2f(d->player.x + cos(angle) / 10, \
+			d->player.y - sin(angle) / 10);
+	}
+	if (keycode == KEY_D)
+	{
+		angle = fmod(d->player_angle - M_PI_2, 2 * M_PI);
+		if (d->map[(int)(d->player.y - sin(angle) / 8)] \
+		[(int)(d->player.x + cos(angle) / 8)] != '1')
+		d->player = v2f(d->player.x + cos(angle) / 10, \
+		d->player.y - sin(angle) / 10);
+	}
+	return (0);
+}
 
 int	dial_key_move2(int keycode, t_data *d)
 {
@@ -28,6 +51,7 @@ int	dial_key_move2(int keycode, t_data *d)
 			d->player = v2f(d->player.x + (d->dir_player.x / 10), \
 			d->player.y - (d->dir_player.y / 10));
 	}
+	dial_key_move3(keycode, d);
 	return (0);
 }
 

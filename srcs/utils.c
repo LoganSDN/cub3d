@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:12:29 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 07:42:02 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 09:17:31 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int	free_tab(char **tab)
 	int	i;
 
 	i = -1;
-	while (tab[++i])
-		free(tab[i]);
+	while (tab && tab[++i])
+	{
+		if (tab[i])
+			free(tab[i]);
+	}
 	free(tab);
 	return (0);
 }
@@ -30,12 +33,16 @@ void	free_all(t_data *d)
 	i = -1;
 	while (++i < 4)
 	{
-		free(d->tex.tex[i].path);
-		mlx_destroy_image(d->mlx_ptr, d->tex.tex[i].img.img_ptr);
+		if (d->tex.tex[i].img.img)
+			mlx_destroy_image(d->mlx_ptr, d->tex.tex[i].img.img);
 	}
-	mlx_destroy_image(d->mlx_ptr, d->img.img_ptr);
-	mlx_destroy_window(d->mlx_ptr, d->win_ptr);
-	free_tab(d->map);
+	if (d->mlx_ptr && d->img.img)
+	{
+		mlx_destroy_image(d->mlx_ptr, d->img.img);
+		mlx_destroy_window(d->mlx_ptr, d->win_ptr);
+	}
+	if (d->map)
+		free_tab(d->map);
 }
 
 char	**join_and_split(t_data *d, int fd)

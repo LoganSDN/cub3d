@@ -6,13 +6,13 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 20:11:30 by lsidan           ###   ########.fr       */
+/*   Updated: 2022/04/26 08:45:36 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
 
-char	**cpy_map(char **map, int *max, char ***new)
+char	**cpy_map(char **map, int *max, char ***new, t_data *d)
 {
 	int		i;
 
@@ -23,7 +23,7 @@ char	**cpy_map(char **map, int *max, char ***new)
 			(*max) = ft_strlen(map[i]);
 	(*new) = malloc(sizeof(char *) * (i + 1));
 	if (!(*new))
-		ft_error("Malloc crash. (Check your ram .. ?)");
+		ft_error("Malloc crash. (Check your ram .. ?)", d);
 	i = -1;
 	while (map[++i])
 	{
@@ -32,7 +32,7 @@ char	**cpy_map(char **map, int *max, char ***new)
 		{
 			free_tab((*new));
 			free_tab(map);
-			ft_error("Malloc crash. (Check your ram .. ?)");
+			ft_error("Malloc crash. (Check your ram .. ?)", d);
 		}
 		(*new)[i][(*max)] = 0;
 		ft_strlcpy((*new)[i], map[i], (*max) + 1);
@@ -59,7 +59,7 @@ void	check_map(t_data *d, char **map, int *order)
 	int		max;
 	char	**new;
 
-	cpy_map(map, &max, &new);
+	cpy_map(map, &max, &new, d);
 	i = -1;
 	while (new[++i])
 	{
@@ -73,7 +73,7 @@ void	check_map(t_data *d, char **map, int *order)
 	new = add_space(new, max, i);
 	i = -1;
 	if (check_border(d, new) || check_char(d, new))
-		ft_error("Parse error\n");
+		ft_error("Parse error\n", d);
 	replace(&new);
 	init_map_var(d, new);
 	free_tab(d->map);

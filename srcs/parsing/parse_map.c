@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 08:45:36 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 11:04:45 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,34 @@ void	check_map(t_data *d, char **map, int *order)
 	free_tab(d->map);
 	d->map = new;
 	(*order)++;
+}
+
+void	skip_space(t_data *d, int i, int *j, int p_s)
+{
+	int	c;
+
+	c = 0;
+	if (p_s)
+		while (ft_isspace(d->map[i][*j]))
+			(*j)++;
+	else
+	{
+		while (ft_isspace(d->map[i][*j]) || d->map[i][*j] == ',')
+		{
+			if (d->map[i][*j] == ',')
+				c++;
+			(*j)++;
+		}
+	}
+	if (c > 1)
+		ft_error("Too may coma\n", d);
+}
+
+void	check_color_count(t_data *d, int i, int *j)
+{
+	skip_space(d, i, j, 0);
+	if (ft_atoi(d->map[i] + (*j)) >= 0)
+		ft_error("Wrong number of color\n", d);
+	if (d->tex.count != 3)
+		ft_error("Wrong number of color667\n", d);
 }

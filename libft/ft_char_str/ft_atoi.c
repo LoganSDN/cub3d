@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:17:56 by lsidan            #+#    #+#             */
-/*   Updated: 2022/01/16 19:14:26 by lsidan           ###   ########.fr       */
+/*   Updated: 2022/04/26 10:57:12 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
+	if (i == 0)
+		return (-1);
 	return (nb * sign);
 }

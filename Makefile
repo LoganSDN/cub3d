@@ -22,9 +22,9 @@ OBJS				= ${SRCS:.c=.o}
 OBJS_DIR			= objs/
 OBJS_PREFIXED		= $(addprefix $(OBJS_DIR), $(OBJS))
 
-RM					= rm -f
+RM					= rm -rf
 
-$(OBJS_DIR)%.o: %.c incl/cub3d.h libft/libft.a mlx/libmlx.a Makefile incl/key_map_azerty.h
+$(OBJS_DIR)%.o: %.c incl/cub3d.h libft/libft.a mlx/libmlx.a Makefile incl/key_map_azerty.h incl/key_map_qwerty.h
 	mkdir -p $(OBJS_DIR)
 	mkdir -p $(OBJS_DIR)/srcs
 	mkdir -p $(OBJS_DIR)/srcs/parsing
@@ -49,7 +49,7 @@ $(NAME): $(OBJS_PREFIXED)
 clean :
 	make -C libft clean
 	make -C mlx clean
-	${RM} ${OBJS} ${OBJS_BONUS}
+	${RM} $(OBJS_DIR)
 	printf "\033[2K\r\033[0;31m.o files deleted.\n\e[0m"
 
 fclean : clean

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 09:47:21 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:04:52 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define WIDTH	1440
-# define HEIGHT 1170
+# define WIDTH	1440 / 2
+# define HEIGHT 1170 / 2
 # define FOV 	1.0471975512
 
 # define TABLE	"NSEW10 "
@@ -62,6 +62,7 @@ typedef struct s_texture
 {
 	t_data_tex	tex[4];
 	t_col		floor_col;
+	int			count;
 	t_col		ceil_col;
 }	t_tex;
 
@@ -85,6 +86,7 @@ typedef struct s_data
 	t_tex	tex;
 	t_v2f	player;
 	t_v2f	dir_player;
+	int		count_col;
 	int		nb_rays;
 	double	player_angle;
 	void	*win_ptr;
@@ -96,8 +98,6 @@ typedef struct s_data
 
 //PARSING
 void	get_desc(t_data *d);
-void	ft_check_surroundings(t_data *d, char **map, int y, int x);
-
 /* Texture */
 void	get_north(t_data *d, int i, int *j, int *order);
 void	get_south(t_data *d, int i, int *j, int *order);
@@ -113,6 +113,8 @@ void	check_map(t_data *d, char **map, int *order);
 int		check_border(t_data *d, char **map);
 int		check_char(t_data *d, char **map);
 /* Utils */
+void	check_color_count(t_data *d, int i, int *j);
+void	skip_space(t_data *d, int i, int *j, int p_s);
 char	**add_space(char **old, int max, int nb_line);
 char	*autocomplete(char *str, int x);
 void	replace(char ***map);
@@ -120,6 +122,7 @@ int		count_digits(int nb);
 int		stop(char c, char *table);
 int		check_w_h(t_data *d);
 int		check_corner(char **map, int i, int j, t_data *d);
+void	ft_check_surroundings(t_data *d, char **map, int y, int x);
 
 //UTILS
 char	**join_and_split(t_data *d, int fd);

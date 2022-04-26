@@ -1,6 +1,6 @@
 NAME				= cub3d
 CC					= gcc
-CFLAGS				=  -O3 -Ofast -flto -march=native -ffast-math -Wall -Werror -Wextra
+CFLAGS				= -march=native -ffast-math -Wall -Werror -Wextra #-Ofast
 SRCS				=	main.c						\
 						srcs/draw/textures.c		\
 						srcs/draw/utils.c			\

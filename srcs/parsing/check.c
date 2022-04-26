@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 07:36:49 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 09:26:50 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ void	spawn_angle(t_data *d, char **map, t_v2 pos)
 		d->player_angle = 0;
 }
 
-int	check_count(int count)
+int	check_count(int count, t_data *d)
 {
 	if (count > 1 || !count)
 	{
 		if (count > 1)
-			ft_error("Too many players ..(Multi not supported)\n");
+			ft_error("Too many players ..(Multi not supported)\n", d);
 		else
-			ft_error("So you want to play, without a player ? Ratio.\n");
+			ft_error("So you want to play, without a player ? Ratio.\n", d);
 		return (1);
 	}
 	return (0);
 }
 
-void	check_forbidden_char(char **map, int i, int j)
+void	check_forbidden_char(char **map, int i, int j, t_data *d)
 {
 	if (map[i][j] != '0' && map[i][j] != '1' && \
 	map[i][j] != 'N' && map[i][j] != 'S' && \
 	map[i][j] != 'E' && map[i][j] != 'W' && !ft_isspace(map[i][j]))
-		ft_error("You slip an unrecognized char. You tricky boy.\n");
+		ft_error("You slip an unrecognized char. You tricky boy.\n", d);
 }
 
 int	check_char(t_data *d, char **map)
@@ -59,7 +59,7 @@ int	check_char(t_data *d, char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			check_forbidden_char(map, i, j);
+			check_forbidden_char(map, i, j, d);
 			if ((map[i][j] == 'N' || map[i][j] == 'S' || \
 				map[i][j] == 'W' || map[i][j] == 'E'))
 			{
@@ -70,7 +70,7 @@ int	check_char(t_data *d, char **map)
 			}
 		}
 	}
-	return (check_count(count));
+	return (check_count(count, d));
 }
 
 int	check_border(t_data *d, char **map)
@@ -87,8 +87,8 @@ int	check_border(t_data *d, char **map)
 		{
 			if (map[i][j] == ' ' && !check_corner(map, i, j, d))
 			{
-				ft_printf("Error in [%d][%d] -> %c\n", i, j, map[i][j]);
-				ft_error("");
+				ft_printf("Error in [%d][%d]", i, j);
+				ft_error("", d);
 				return (1);
 			}
 		}

@@ -3,22 +3,15 @@
                   
 
 SO ./texture/64x64/so.xpm
-NO ./texture/64x64/no.xpm
+NO ./texture/64x64/no.xpm                                    
 
 
 
-F 210,150,20
+F 210,150,20,    
 EA ./texture/64x64/ea.xpm
 
 
-
-
-
-
-
-
 C 173, 216, 220
-
 WE ./texture/64x64/we.xpm
 
         1111111111111111111111111

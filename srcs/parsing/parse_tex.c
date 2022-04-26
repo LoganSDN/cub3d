@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:29:05 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 10:33:22 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 13:21:33 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_north(t_data *d, int i, int *j, int *order)
 		(*j) += 2;
 		while (ft_isspace(d->map[i][*j]))
 			(*j) += 1;
-		d->tex.tex[0].path = ft_strdup(d->map[i] + (*j));
+		d->tex.tex[0].path = ft_strtrim(ft_strdup(d->map[i] + (*j)), " ");
 		if (!d->tex.tex[0].path)
 			ft_error("Unable to copy the path of 'NO_tex'\n", d);
 		d->tex.tex[0].img.img = mlx_xpm_file_to_image(d->mlx_ptr, \
@@ -43,7 +43,7 @@ void	get_south(t_data *d, int i, int *j, int *order)
 		(*j) += 2;
 		while (ft_isspace(d->map[i][*j]))
 			(*j) += 1;
-		d->tex.tex[2].path = ft_strdup(d->map[i] + (*j));
+		d->tex.tex[2].path = ft_strtrim(ft_strdup(d->map[i] + (*j)), " ");
 		if (!d->tex.tex[2].path)
 			ft_error("Unable to copy the path of 'SO_tex'\n", d);
 		d->tex.tex[2].img.img = mlx_xpm_file_to_image(d->mlx_ptr, \
@@ -67,7 +67,7 @@ void	get_west(t_data *d, int i, int *j, int *order)
 		(*j) += 2;
 		while (ft_isspace(d->map[i][*j]))
 			(*j) += 1;
-		d->tex.tex[3].path = ft_strdup(d->map[i] + (*j));
+		d->tex.tex[3].path = ft_strtrim(ft_strdup(d->map[i] + (*j)), " ");
 		if (!d->tex.tex[3].path)
 			ft_error("Unable to copy the path of 'WE_tex'\n", d);
 		d->tex.tex[3].img.img = mlx_xpm_file_to_image(d->mlx_ptr, \
@@ -91,7 +91,7 @@ void	get_east(t_data *d, int i, int *j, int *order)
 		(*j) += 2;
 		while (ft_isspace(d->map[i][*j]))
 			(*j) += 1;
-		d->tex.tex[1].path = ft_strdup(d->map[i] + (*j));
+		d->tex.tex[1].path = ft_strtrim(ft_strdup(d->map[i] + (*j)), " ");
 		if (!d->tex.tex[1].path)
 			ft_error("Unable to copy the path of 'EA_tex'\n", d);
 		d->tex.tex[1].img.img = mlx_xpm_file_to_image(d->mlx_ptr, \
@@ -110,8 +110,18 @@ void	get_east(t_data *d, int i, int *j, int *order)
 
 void	get_tex(t_data	*d, int i, int *j, int *order)
 {
-	get_north(d, i, j, order);
-	get_south(d, i, j, order);
-	get_west(d, i, j, order);
-	get_east(d, i, j, order);
+	int	tmp;
+
+	tmp = (*order);
+	if (!d->tex.tex[0].path)
+		get_north(d, i, j, order);
+	if (!d->tex.tex[2].path)
+		get_south(d, i, j, order);
+	if (!d->tex.tex[3].path)
+		get_west(d, i, j, order);
+	if (!d->tex.tex[1].path)
+		get_east(d, i, j, order);
+	get_color(d, i, j, order);
+	if ((*order) == tmp)
+		ft_error("Wrong declaration of texture\n", d);
 }

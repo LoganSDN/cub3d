@@ -3,12 +3,11 @@ SO ./texture/64x64/so.xpm
 NO ./texture/64x64/no.xpm
 
 
-
 C 255, 216, 255
-EA ./texture/64x64/ea.xpm
-
+EA ./texture/64x64/ea.xpm                                    
+WE ./texture/64x64/we.xpm                                    
 F 250,249, 255
-WE ./texture/64x64/we.xpm
+
 
 11111111
 10100101

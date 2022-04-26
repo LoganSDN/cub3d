@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 07:55:31 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 08:46:23 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 13:18:06 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	order_sorter(t_data *d, int *order)
 		if ((*order) < 6)
 		{
 			get_tex(d, i, &j, order);
-			get_color(d, i, &j, order);
 			continue ;
 		}
 		if ((*order) == 6)
@@ -36,7 +35,7 @@ void	order_sorter(t_data *d, int *order)
 			check_map(d, d->map + i, order);
 			break ;
 		}
-	}	
+	}
 }
 
 void	get_desc(t_data *d)

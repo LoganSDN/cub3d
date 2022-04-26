@@ -7,7 +7,7 @@ NO ./texture/64x64/no.xpm
 
 
 
-F 210,150,42
+F 210,150,20
 EA ./texture/64x64/ea.xpm
 
 
@@ -17,7 +17,7 @@ EA ./texture/64x64/ea.xpm
 
 
 
-C 173, 216, 230 
+C 173, 216, 220
 
 WE ./texture/64x64/we.xpm
 

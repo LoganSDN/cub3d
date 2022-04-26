@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 08:52:12 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 09:47:21 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_data
 
 //PARSING
 void	get_desc(t_data *d);
+void	ft_check_surroundings(t_data *d, char **map, int y, int x);
+
 /* Texture */
 void	get_north(t_data *d, int i, int *j, int *order);
 void	get_south(t_data *d, int i, int *j, int *order);

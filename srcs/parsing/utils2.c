@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 09:01:23 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 07:52:08 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 10:04:39 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/cub3d.h"
+
+#define TAB "10NSEW" 
 
 int	count_line(char **map)
 {
@@ -63,4 +65,24 @@ int	check_corner(char **map, int i, int j, t_data *d)
 	if (i != ln - 1 && j && map[i + 1][j - 1] && map[i + 1][j - 1] == '0')
 		return (0);
 	return (1);
+}
+
+void	ft_check_surroundings(t_data *d, char **map, int y, int x)
+{
+	int	i;
+	int	j;
+
+	j = 1;
+	while (j >= -1)
+	{
+		i = 1;
+		while (map[y - j][x - i] && i >= -1)
+		{
+			if (map[y - j][x - i] == ' ')
+				ft_error("Character not surrounded \
+				by viable environement, better be on Mars at this point", d);
+			i--;
+		}
+		j--;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 08:44:28 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/21 11:33:56 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 09:55:27 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,8 @@ int	stop(char c, char *table)
 
 	i = -1;
 	while (table && table[++i])
-	{
 		if (table[i] != c)
 			return (1);
-	}
 	return (0);
 }
 

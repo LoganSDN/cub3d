@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 09:26:50 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 09:47:07 by emortier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	check_char(t_data *d, char **map)
 			if ((map[i][j] == 'N' || map[i][j] == 'S' || \
 				map[i][j] == 'W' || map[i][j] == 'E'))
 			{
+				ft_check_surroundings(d, map, i, j);
 				pos = v2(j, i);
 				d->player = v2f(j + 0.5, i + 0.5);
 				spawn_angle(d, map, pos);

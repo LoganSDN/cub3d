@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 11:04:45 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 11:14:19 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	check_color_count(t_data *d, int i, int *j)
 	if (ft_atoi(d->map[i] + (*j)) >= 0)
 		ft_error("Wrong number of color\n", d);
 	if (d->tex.count != 3)
-		ft_error("Wrong number of color667\n", d);
+		ft_error("Wrong number of color\n", d);
 }

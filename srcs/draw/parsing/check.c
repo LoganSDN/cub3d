@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/26 09:47:07 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:24:08 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,25 @@ void	check_forbidden_char(char **map, int i, int j, t_data *d)
 
 int	check_char(t_data *d, char **map)
 {
-	int		i;
-	int		j;
+	t_v2	q;
 	t_v2	pos;
 	int		count;
 
-	i = -1;
+	q = v2(-1, -1);
 	count = 0;
-	while (map[++i])
+	if (!map)
+		ft_error("Malloc crash. (Check your ram .. ?)\n", d);
+	while (map[++q.x])
 	{
-		j = -1;
-		while (map[i][++j])
+		q.y = -1;
+		while (map[q.x][++q.y])
 		{
-			check_forbidden_char(map, i, j, d);
-			if ((map[i][j] == 'N' || map[i][j] == 'S' || \
-				map[i][j] == 'W' || map[i][j] == 'E'))
+			check_forbidden_char(map, q.x, q.y, d);
+			if (ft_strchr("NSEW", map[q.x][q.y]) != NULL)
 			{
-				ft_check_surroundings(d, map, i, j);
-				pos = v2(j, i);
-				d->player = v2f(j + 0.5, i + 0.5);
+				ft_check_surroundings(d, map, q.x, q.y);
+				pos = v2(q.y, q.x);
+				d->player = v2f(q.y + 0.5, q.x + 0.5);
 				spawn_angle(d, map, pos);
 				count++;
 			}
@@ -81,6 +81,8 @@ int	check_border(t_data *d, char **map)
 
 	(void) d;
 	i = -1;
+	if (!map)
+		ft_error("Malloc crash. (Check your ram .. ?)\n", d);
 	while (map[++i])
 	{
 		j = -1;

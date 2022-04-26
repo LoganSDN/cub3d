@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:59:18 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 19:06:28 by lsidan           ###   ########.fr       */
+/*   Updated: 2022/04/26 07:36:54 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../mlx/mlx.h"
 # include "../srcs/vector/vector.h"
 # include "../libft/libft.h"
-# include "key_map_azerty.h"
+# include "key_map_qwerty.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -84,7 +84,6 @@ typedef struct s_data
 	t_img	img;
 	t_tex	tex;
 	t_v2f	player;
-	t_v2	ratio;
 	t_v2f	dir_player;
 	t_ray	ray;
 	int		nb_rays;
@@ -119,6 +118,7 @@ void	replace(char ***map);
 int		count_digits(int nb);
 int		stop(char c, char *table);
 int		check_w_h(t_data *d);
+int		check_corner(char **map, int i, int j, t_data *d);
 
 //UTILS
 char	**join_and_split(t_data *d, int fd);

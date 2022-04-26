@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 08:50:36 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 08:20:09 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/26 07:36:49 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,11 @@ int	check_border(t_data *d, char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] && map[i][j] == '0')
+			if (map[i][j] == ' ' && !check_corner(map, i, j, d))
 			{
-				if ((map[i - 1][j] && map[i - 1][j] == ' ') || \
-					(map[i + 1][j] && map[i + 1][j] == ' ') || \
-					(map[i][j + 1] && map[i][j + 1] == ' ') || \
-					(map[i][j - 1] && map[i][j - 1] == ' '))
-				{
-					ft_printf("Error in [%d][%d] -> %c\n", i, j, map[i][j]);
-					ft_error("");
-					return (1);
-				}
+				ft_printf("Error in [%d][%d] -> %c\n", i, j, map[i][j]);
+				ft_error("");
+				return (1);
 			}
 		}
 	}

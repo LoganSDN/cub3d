@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emortier <emortier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 10:12:29 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 17:05:26 by emortier         ###   ########.fr       */
+/*   Updated: 2022/04/26 07:42:02 by lsidan           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,16 @@ int	free_tab(char **tab)
 
 void	free_all(t_data *d)
 {
-	free(d->tex.tex[0].path);
-	free(d->tex.tex[1].path);
-	free(d->tex.tex[2].path);
-	free(d->tex.tex[3].path);
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		free(d->tex.tex[i].path);
+		mlx_destroy_image(d->mlx_ptr, d->tex.tex[i].img.img_ptr);
+	}
+	mlx_destroy_image(d->mlx_ptr, d->img.img_ptr);
+	mlx_destroy_window(d->mlx_ptr, d->win_ptr);
 	free_tab(d->map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lsidan <lsidan@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 09:41:00 by lsidan            #+#    #+#             */
-/*   Updated: 2022/04/25 14:36:19 by lsidan           ###   ########lyon.fr   */
+/*   Updated: 2022/04/25 20:11:30 by lsidan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	init_map_var(t_data *d, char **map)
 	while (map[i])
 		d->map_height = i++;
 	d->map_height++;
-	d->ratio = v2(WIDTH / d->map_len, HEIGHT / d->map_height);
 }
 
 void	check_map(t_data *d, char **map, int *order)

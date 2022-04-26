@@ -1,13 +1,13 @@
-SO ./texture/so.xpm
-NO ./texture/no.xpm
+SO ./texture/32x32/so.xpm
+NO ./texture/32x32/no.xpm
 
 
 
 F 250,249,246
-EA ./texture/ea.xpm
+EA ./texture/32x32/ea.xpm
 
 
-WE ./texture/we.xpm
+WE ./texture/32x32/we.xpm
 
 
 
